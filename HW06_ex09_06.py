@@ -14,10 +14,30 @@
 
 # Body
 
+def is_abecedarian(word):
+	isAbecedarian = True
+	currentAscii = 0
+	previousAscii = 0
+	for letter in word:
+		currentAscii = ord(letter.lower())
+		if currentAscii < previousAscii:
+			isAbecedarian = False
+		previousAscii = currentAscii
+	return isAbecedarian
+
+def words_abecedarian():
+	fin = open("words.txt", "r")
+	count = 0
+	for line in fin:
+		if is_abecedarian(line) == True:
+			count+=1
+			print line
+	print "The number of words that are abecedarian: " + str(count)
+
 
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    words_abecedarian() # Call your function(s) here.
 
 if __name__ == '__main__':
     main()

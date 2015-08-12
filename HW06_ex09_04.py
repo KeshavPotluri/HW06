@@ -18,10 +18,24 @@
 
 # Body
 
+def uses_only(word, useCases):
+	usesOnly = True
+	for letter in word:
+		if useCases.lower().find(letter.lower())<0:
+			usesOnly = False
+	return usesOnly
+
+def words_with_acefhlo():
+	fin = open("words.txt", "r")
+	for line in fin:
+		line = line.strip()
+		if uses_only(line, "acefhlo") == True:
+			print line
+
 
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+	words_with_acefhlo()  # Call your function(s) here.
 
 if __name__ == '__main__':
     main()
